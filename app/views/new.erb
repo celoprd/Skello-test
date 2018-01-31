@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <h2 class="text-center">Your New Post</h2>
+      <form action="/posts" method="post">
+        <div class="form-group">
+          <label for="post_title">Title</label>
+          <input id="post_title" class="form-control" name="post[title]" type="text"/>
+        </div>
+        <div class="form-group">
+          <label for="post_content">Your text</label>
+          <textarea id="post_content" name="post[content]" class="form-control" rows="15"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="post_photo">Photo</label>
+          <input type="file" id="post_photo" name="post[photo]" accept="image/x-png,image/gif,image/jpeg"/>
+        </div>
+        <button type="submit" class="btn btn-success form-control">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

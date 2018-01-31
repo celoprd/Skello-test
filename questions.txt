@@ -1,0 +1,120 @@
+BACKEND - Programming
+These can be done in any language you're comfortable with
+
+1. Give a regular expression that detects hexadecimal numbers in a text.
+For example, ‘0x0f4’, ‘0acdadecf822eeff32aca5830e438cb54aa722e3’, ‘8BADF00D’ should be detected.
+
+>  \b(?:0[xX])?[0-9a-fA-F]+\b
+
+2.Here is the pseudo code of a function that is defined recursively:
+-  f(0) = 1;
+-  f(1) = 3;
+-  f(n)= 3 * f(n-1) - f(n-2);
+Provide an implementation for ‘f’. Bonus points for a non recursive implementation.
+
+> Voici l'implementation de f dans le cas d'une fonction recursive.
+
+def f_recursive(x)
+  if x == 0
+    return 1
+  elsif x == 1
+    return 3
+  else
+    return 3 * f_recursive(x - 1) - f_recursive(x - 2)
+  end
+end
+
+Et ici l'implementation non recursive
+
+def f_non_recursive(x)
+  if x == 0
+    return 1
+  elsif x == 1
+    return 3
+  else
+    actual = 3
+    old = 1
+    (2..x).each do
+      new  = 3 * actual - old
+      old = actual
+      actual = new
+    end
+    actual
+  end
+end
+
+
+BACKEND - MySQL
+
+1. Write a CREATE TABLE query for a table storing information on users. It will store:
+  - id,
+  - firstname,
+  - lastname,
+  - gender,
+  - email,
+  - created_at
+
+>
+class CreateUsers < ActiveRecord::Migration[5.1]
+  def change
+    create_table :users do |t|
+      t.string :firstname
+      t.string :lastname
+      t.string :gender, :limit => 1
+      t.string :email
+
+      t.timestamps
+    end
+  end
+end
+
+Je décide de storer "gender" dans une column string limité a 1 charactere "m" ou "f".
+J'ai étudié le cas d'un boolean, mais j'étais limité dans le nombre de choix et il aurait fallu changer le nom de la column pour "isMale" or "isFemale".
+Un integer aurait été aussi possible, en définissant le "1" pour male par exemple et ainsi de suite, mais je trouvais ca moins explicite a la comprehension du code, et il n'y aurai pas de calcul a effectuer sur le genre.
+
+2. Write a query on the previous table that lists the 10 most recently added users.
+
+>
+Dans mon controller, j'utiliserais cette requette pour lister les 10 derniers users ajoutés.
+
+User.order('created_at DESC').limit(10)
+
+Ce qui va generer cette requete SQL :
+
+SELECT * FROM Users ORDER BY created_at DESC LIMIT 10
+
+GENERAL - Creativity
+Si vous êtes Français, vous pouvez répondre en Français.
+
+1. Describe the color yellow to someone who is blind
+
+> Le jaune est une couleur vive et joyeuse, c'est la couleur du soleil et du feu. La chaleur est représentative de la couleur jaune. De nombreux fruits sont jaune tel que le citron et la banane, ils n'ont certe pas le meme gout mais l'acidité du citron et l'exotisme de la banane rappellent le jaune. Ces fruits necessitent d'ailleurs beaucoup de soleil pour pousser.
+Le jaune m'evoque de la gaieté, de l'optimisme et de la confiance, le jaune apporte de la lumiere a l'obscurité.
+
+3. Describe the data model you’d use for a Battleship game. What are the key objects? How will your code use them?
+
+>J'utliserais une table player, une table Board, une table Ship, une table Cell et une table Game
+
+Tout les models ont des dependances entre eux et integrent des objets clefs tel que :
+
+table User:     t.integer  "first_user_id"
+                t.integer  "second_user_id"
+                t.references :game, foreign_key: true
+
+table Ship:
+                  t.string   "name"
+                  t.boolean  "vertical?"
+                  t.integer  "x_coordinate"
+                  t.integer  "y_coordinate"
+                  t.integer  "length"
+                  t.references :board, foreign_key: true
+                  t.references :user, foreign_key: true
+
+
+table Board :
+                  t.integer "size"
+
+table Cell :      t.boolean "empty?"
+                  t.references :board, foreign_key: true
+
+
