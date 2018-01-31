@@ -48,7 +48,8 @@ end
 get '/posts/:id/upvote' do
   id = params[:id]
   upvote_post = Post.find(id)
-  upvote_post.vote!
+
+  upvote_post.rating += 1
   upvote_post.save
 redirect "/"
 end
