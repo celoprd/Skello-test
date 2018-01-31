@@ -2,22 +2,6 @@
 
 <div class="container">
   <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-xs-12 col-sm-4 col-md-3">
-        <div id="wrapper">
-          <a href="/posts/<%= post.id %>">
-          <img class ="card hover" src="<%= post.photo.nil? ? "https://unsplash.it/600?image=3" : post.photo %>">
-            <p class="text"><%= post.content[0..500] %>...</p>
-          </a>
-        </div>
-          <a href="/posts/<%= post.id %>">
-            <h3 class="card-option"><%= post.title %></h3>
-          </a>
-          <a href="/posts/<%= post.id %>/upvote">
-            <i class="fa fa-plus" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="New post"></i>
-          </a>
-        <%= post.rating %>
-      </div>
-    <% end %>
+    <%= erb :cards %>
   </div>
 </div>
