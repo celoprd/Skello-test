@@ -9,7 +9,7 @@ set :bind, '0.0.0.0'
 
 
 get "/" do
-  @title = "Bienvenue"
+  @title = "Skello Times"
   @posts = Post.ordered_by_ratings
 erb :posts
 end
