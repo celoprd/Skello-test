@@ -29,5 +29,3 @@ ruby app.rb
 Then browse http://localhost:4567/
 ```
 
-The app is also live on Heroku:
-
