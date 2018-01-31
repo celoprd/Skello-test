@@ -6,28 +6,28 @@ Take a look at questions.txt and answer the questions presented to you
 
 **2/ Sinatra Exercise**
 
-This is a fullstack exercise, creating a simple webapp in Sinatra
+To run the app locally:
 
-Sinatra is a simple web framework for Ruby, similar in logic to Rails. It uses [erb](http://www.stuartellis.eu/articles/erb/), and can take routes with parameters.
+```bash
+git clone git@github.com:celestin17/Skello-test.git
+bundle install
+```
 
-=> [doc](http://www.sinatrarb.com/)
+In ```config/database.yml```, yield the ```username``` of your local machine for postgresql and a ```password``` if needed.
 
-=> [Github](https://github.com/sinatra/sinatra)
+Then setup the database with:
+```
+rake db:create
+rake db:migrate
+rake db:seed
+```
 
-*Don't forget to run ```gem install sinatra``` && ```gem install sinatra-contrib``` in order to run the program*
+Then launch the app:
 
-In this simple exercise, a database of posts and comments is given to you (see Database.rb). Comments are ordered to match each post (first comment array - first post, etc.).
+```
+ruby app.rb
+Then browse http://localhost:4567/
+```
 
-Your goal is to create a credible web application listing posts and comments. The app must make intelligent use of the components of each post, and overall look like a real web app. The rest is completely up to you.
+The app is also live on Heroku:
 
-This is a test of your front-end, back-end capabilities, as well as your creativity. We will be looking for:
-
-- A clean backend code
-
-- A professional-looking front-end
-
-- A surprising feature: something we wouldn't have thought about.
-
-Overall, we're just looking for you to surprise us!
-
-*Any questions ? [samy@skello.io](mailto:samy@skello.io)*
