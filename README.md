@@ -26,6 +26,6 @@ Then launch the app:
 
 ```
 ruby app.rb
-Then browse http://localhost:4567/
+Browse http://localhost:4567/
 ```
 
