@@ -1,10 +1,12 @@
+<!-- Page principale index de tous les articles -->
+
 <div class="container">
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-xs-12 col-sm-4 col-md-3">
         <div id="wrapper">
           <a href="/posts/<%= post.id %>">
-          <img class ="card hover" src="<%= post.photo.nil? ? "https://picsum.photos/600?image=9" : post.photo %>">
+          <img class ="card hover" src="<%= post.photo.nil? ? "https://unsplash.it/600?image=3" : post.photo %>">
             <p class="text"><%= post.content[0..500] %>...</p>
           </a>
         </div>
